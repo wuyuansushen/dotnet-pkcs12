@@ -35,6 +35,8 @@ trust list --filter certificates | grep -i -n localhost
 
 ## 5.Use curl with self-signed certificate
 
+:warning: Add `-v` option to curl to get more details of connection(debug mode).
+
 > :warning: Remember to `unset` all proxy env various like *all_proxy* or add `localhost` to *no_proxy*
 
 Connect *localhost* express server without CA certificate file:
@@ -45,3 +47,8 @@ curl failed to verify the legitimacy of the server and therefore could not
 establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
 
+Connect *localhost* express server with self-signed CA certificate file:
+
+```
+curl --cacert .dotnet/corefx/cryptography/x509stores/my/cert.pem https://localhost:5001/
+```
